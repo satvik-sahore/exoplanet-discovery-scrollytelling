@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exoplanet Scrollytelling</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preload" as="image" href="img/earth.png">
+    <link rel="preload" as="image" href="img/earthzoomed.png">
+    <link rel="preload" as="image" href="img/kepler_telescope.png">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <div class="aspect-ratio-wrapper">
+        <!-- Narrative for Scatter Plot -->
+        <div class="section narrative" id="intro1">
+            <div class="content">
+                <h2>Beyond Our Solar System: The Voyage Through Exoplanet Discoveries</h2>
+                <p>The discovery of exoplanets, planets orbiting stars beyond our solar system, has transformed our understanding of the universe and our place within it. This project narrates the captivating story of exoplanet discoveries, tracing the intricate relationship between groundbreaking technological advancements and the rapid acceleration of our ability to uncover and study these distant worlds.</p>
+            </div>
+        </div>
+
+        <div class="section narrative" id="narrative-1">
+            <div class="content">
+                <h2>Line Chart</h2>
+                <p>This interactive line chart visualizes the <strong>cumulative discoveries</strong> over time, providing insights into how the number of discoveries has grown across the years. The chart uses <strong>data points</strong> connected by a smooth line to represent the progression of cumulative counts year by year, giving viewers a clear understanding of trends and patterns in the data.</p>
+                  <h2>Key Features</h2>
+                  <ul>
+                    <li>
+                      <strong>X-Axis (Year):</strong>
+                      <ul>
+                        <li>The horizontal axis represents the years, starting from the earliest year in the data and progressing to the most recent.</li>
+                        <li>The axis is scaled dynamically based on the range of years in the dataset, ensuring all data is displayed proportionately.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Y-Axis (Cumulative Discoveries):</strong>
+                      <ul>
+                        <li>The vertical axis represents the cumulative count of discoveries.</li>
+                        <li>It starts at 0 and extends to the maximum value in the dataset, making it easy to track the total number of discoveries over time.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Line Path:</strong>
+                      <ul>
+                        <li>A smooth line connects the data points, providing a continuous representation of the trend.</li>
+                        <li>The line’s shape helps users quickly identify periods of rapid growth or stagnation in cumulative discoveries.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Data Points:</strong>
+                      <ul>
+                        <li>Each discovery year is marked with a small circle on the line, making individual data points easily identifiable.</li>
+                        <li>These points allow users to interact with the chart and get specific details for each year.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Tooltip Interaction:</strong>
+                      <ul>
+                        <li>Hovering over a data point displays a tooltip with detailed information, including:</li>
+                        <ul>
+                          <li><strong>Year:</strong> The specific year of the data point.</li>
+                          <li><strong>Cumulative Count:</strong> The total number of discoveries by that year.</li>
+                        </ul>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Zoom and Pan Functionality:</strong>
+                      <ul>
+                        <li>Users can zoom in to examine specific time ranges in greater detail.</li>
+                        <li>Panning allows users to navigate across the timeline, especially useful for datasets spanning many years.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Scrollable Container:</strong>
+                      <ul>
+                        <li>The chart is embedded in a scrollable container, ensuring it remains visually accessible even on smaller screens or when the chart exceeds the viewport width.</li>
+                      </ul>
+                    </li>
+                  </ul>
+            </div>
+        </div>
+
+        <div class="section narrative" id="narrative-1.1">
+            <div class="content">
+                <h2>How to Use the Visualization</h2>
+                <ol>
+                    <li>
+                      <strong>Explore Trends:</strong> Look at the overall shape of the line to identify how discoveries have grown over time. Steep sections indicate periods of rapid growth, while flatter sections suggest slower progress.
+                    </li>
+                    <li>
+                      <strong>Get Specific Insights:</strong> Hover over individual data points to view the exact year and cumulative count. This is particularly useful for pinpointing significant milestones or shifts in the trend.
+                    </li>
+                    <li>
+                      <strong>Zoom and Pan:</strong> Use your mouse or touch gestures to zoom into specific periods of interest, such as a rapid growth phase. Pan across the chart to explore earlier or later years in detail.
+                    </li>
+                    <li>
+                      <strong>Scroll for Wider Views:</strong> If the chart extends beyond your screen, use the horizontal scrollbar to view the entire timeline without compromising detail.
+                    </li>
+                  </ol>
+                
+                  <h2>Purpose of the Visualization</h2>
+                  <p>This chart is designed to help users understand how cumulative discoveries have evolved over time. Whether used by scientists, educators, or enthusiasts, it provides a simple yet powerful way to explore trends and patterns in discovery data. The interactivity ensures the visualization is engaging and accessible, making complex data intuitive and easy to interpret.</p>
+            </div>
+        </div>
+
+        <div class="section iframe-container" id="plot0">
+            <iframe id="linechart" src="plots/linechart/index.html" loading="eager"></iframe>
+        </div>
+
+        <div class="section image-container" id="kepler-telescope">
+            <img id="kepler-image" src="img/kepler_telescope.png" alt="Kepler Telescope">
+        </div>
+
+        <!-- Narrative for Scatter Plot -->
+        <div class="section narrative" id="narrative0">
+            <div class="content">
+                <h2>The Era of Kepler</h2>
+                <p>The Kepler space telescope, launched on March 6, 2009, combined advanced stellar brightness measurement techniques with the largest digital camera ever designed for space observation at the time. It was initially positioned to continuously observe 150,000 stars within a star-rich region of the Cygnus constellation, conducting the first comprehensive survey of planets in our galaxy. This mission marked NASA's first effort to identify Earth-sized planets located in the habitable zones of their stars.</p>
+                <p>Kepler detected planets by observing transits—small dips in a star's brightness caused when a planet passes in front of it.</p>
+                <p>The spacecraft was essentially built around a single, specially designed instrument: a telescope with a 3-foot (1-meter) aperture and an image sensor array. Its 4-foot, 7-inch (1.4-meter) mirror was one of the largest ever sent beyond Earth's orbit.</p>
+                <p>Designed to monitor approximately 100,000 main-sequence stars over three and a half years, Kepler quickly demonstrated its capability by discovering five exoplanets—Kepler 4b, 5b, 6b, 7b, and 8b—within its first six weeks of operation, an achievement announced by NASA in January 2010.</p>
+            </div>
+        </div>
+
+        <div class="section narrative" id="narrative0.1">
+            <div class="content">
+                <h2>Interactive Pie Chart: Detection Method Trends</h2>
+                <p>Our interactive pie chart offers a comprehensive overview of the various methods used to discover exoplanets. Each slice of the pie represents a different detection technique, showcasing their relative prevalence in the field of exoplanet research. This visualization not only highlights the diversity of approaches scientists employ but also emphasizes the most effective and widely used methods in identifying planets beyond our solar system.</p>
+            </div>
+        </div>
+
+        <div class="section narrative" id="narrative0.2">
+            <div class="content">
+                <h2>Key Features</h2>
+                <ul>
+                    <li>
+                        <strong>Comprehensive Detection Overview:</strong>
+                        A pie chart displays the relative prevalence of exoplanet detection methods such as Transit, Radial Velocity, Direct Imaging, and more. Each slice’s size reflects the method's success, with distinct colors and a legend for easy differentiation.
+                    </li>
+                    <li>
+                        <strong>Interactive Insights:</strong>
+                        <ul>
+                            <li><strong>Hover for Details:</strong> View the number of exoplanets discovered using each method.</li>
+                            <li><strong>Click for Analysis:</strong> Clicking a slice reveals a detailed breakdown of discoveries before and after the Kepler mission, showcasing the telescope’s transformative impact.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Pre- and Post-Kepler Comparison:</strong>
+                        A secondary chart highlights the evolution of detection techniques, comparing their effectiveness across two eras: pre- and post-Kepler. Observe trends such as significant increases in Transit Detection post-Kepler.
+                    </li>
+                </ul>
+        
+                <h2>Why This Visualization Matters</h2>
+                <ul>
+                    <li>
+                        <strong>Educational Tool:</strong>
+                        Offers an engaging way to learn about detection methods and their evolution over time.
+                    </li>
+                    <li>
+                        <strong>Highlighting Innovation:</strong>
+                        Emphasizes how missions like Kepler revolutionized exoplanet detection.
+                    </li>
+                    <li>
+                        <strong>Encouraging Exploration:</strong>
+                        Facilitates discussions on future research and the potential for discovering Earth-like worlds.
+                    </li>
+                </ul>
+        
+                <h2>How to Use</h2>
+                <ol>
+                    <li><strong>Explore Overall Chart:</strong> Examine the main pie chart to see the distribution of detection methods.</li>
+                    <li><strong>Hover and Click:</strong> Hover over slices for discovery counts or click to analyze pre- and post-Kepler performance.</li>
+                    <li><strong>Attributes Selection</strong>Enable dynamic analysis by selecting or deselecting attributes directly from the legend to focus on specific segments of the pie chart data.</li>
+                    <li><strong>Analyze Trends:</strong> Observe shifts in effectiveness, particularly advancements post-Kepler.</li>
+                    <li><strong>Navigate Back:</strong> Click other slices to explore different methods.</li>
+                </ol>
+        
+                <p>
+                    This visualization provides a dynamic, user-friendly lens into the evolving field of exoplanet discovery, revealing the remarkable progress enabled by technological innovation.</p>
+            </div>
+        </div>
+
+        <!-- Visualization for Pie Chart -->
+        <div class="section iframe-container" id="pie">
+            <iframe id="vizPieChart" src="plots/Keplers-PieChart/index.html" loading="eager"></iframe>
+        </div>
+
+        <!-- Narrative for Scatter Plot -->
+        <div class="section narrative" id="narrative1.1">
+            <div class="content">
+                <h2>Scatterplot of Exoplanet Discoveries and their Characteristics</h2>
+                <p>This visualization is designed to bring the fascinating world of exoplanet discovery to life. By combining scientific data with interactive tools, it allows you to explore the relationship between exoplanets, their characteristics, and the technologies that have enabled their discovery.</p>
+                <p>Here's what you can do with this visualization:</p>            
+                <ul>Compare Planet Characteristics: Select attributes such as planet radius, mass, distance from their host stars, or insolation flux to analyze the diversity of known exoplanets. Choose Earth-based or Jupiter-based comparisons to see how these worlds stack up against familiar references.</ul>
+                <ul>Explore Distance from Earth or Jupiter: The X-axis represents the distance of exoplanets in parsecs, helping you visualize their placement in the cosmos.</ul>
+                <ul>Classify by Discovery and Habitability: Use the color dropdown to categorize exoplanets by their discovery methods, host star types, or even surface temperatures. The tool highlights Earth-like planets by grouping them as cooler, hotter, or similar to Earth's temperature range.</ul>
+                <ul>Dynamic and Intuitive Design: The visualization adjusts dynamically to changes, offering smooth transitions and clear insights. Hover over points to view tooltips with detailed information about each planet, including their name, discovery year, and other characteristics.</ul>
+                <ul>Interactive Legends and Filtering: Legends allow you to focus on specific categories or ranges, while outliers are automatically filtered to ensure clarity in the presented data.</ul>
+                <ul>This tool is perfect for curious minds, educators, and enthusiasts who want to delve into the science of exoplanets. Whether you’re exploring the evolution of habitable planet discoveries or understanding the patterns in detection methods, this interactive experience brings the data to your fingertips, making complex astronomical insights accessible and engaging.</ul>
+            </div>
+        </div>
+
+        <!-- Visualization for Scatter Plot -->
+        <div class="section iframe-container" id="plot1">
+            <iframe id="vizScatter" src="plots/scatterplot/DV-Project/index.html" loading="eager"></iframe>
+        </div>
+
+        <!-- Narrative for Geospatial Visualization -->
+        <div class="section narrative" id="narrative2">
+            <div class="content">
+                <h2>Geospatial Distribution: Explore the Global Landscape of Exoplanet Discoveries</h2>
+                <p>This interactive world map provides a comprehensive view of the exoplanet discovery process, highlighting the contributions of ground-based and space-based facilities across the globe. Using data-driven visuals, the map reveals the intricate relationship between location, discovery techniques, and the expanding catalog of exoplanets.</p>
+                <p>Key Features of the Visualization:
+                    <ul>World Map Overview: The map presents a thermal representation of exoplanet discoveries, where countries are color-coded based on the number of exoplanets identified through facilities within their borders. Hovering over a country provides detailed information about its contribution to exoplanet discoveries.</ul>
+                    <ul>Facility-Level Insights: Circles on the map represent individual discovery facilities—both ground-based observatories and space-based missions. The size and color intensity of each circle correlate with the number of exoplanets discovered. Hover over a circle to see detailed data about the facility, including its name, location, and total discoveries.</ul>
+                    <ul>Interactive Filters: Use checkboxes to toggle between ground-based and space-based facilities, tailoring the visualization to focus on specific discovery methods. The map updates dynamically to reflect your preferences.</ul>
+                    <ul>Legends and Scales: Two legends provide context for the thermal maps:
+                        <ul>Country Legend: Displays the gradient scale for the number of discoveries attributed to countries.</ul>
+                        <ul>Facility Legend: Shows the scale for exoplanets discovered by individual facilities.</ul>
+                    </ul>
+                    <ul>Zoom and Pan: Explore the map in detail with zoom and pan functionality, allowing you to focus on specific regions or facilities of interest.</ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="section narrative" id="narrative2.1">
+            <div class="content">
+                <h2>How to Use</h2>
+                <ul>Zoom and Pan: Explore the map in detail with zoom and pan functionality, allowing you to focus on specific regions or facilities of interest.</ul>
+                <ul></ul>
+                <ul>Analyze Facility Contributions: Hover over individual circles to learn more about specific discovery facilities. You can identify their type (ground or space) and their contribution to exoplanet research.</ul>
+                <ul>Track Discoveries Over Time: Use the timeline slider to explore how exoplanet discoveries have evolved month by month. Click the "Play" button to see the progression automatically.</ul>
+                <ul>Customize Your View: Toggle between ground and space facilities using the filters to understand the role of each in advancing our knowledge of the universe.</ul>
+            </div>
+        </div>
+
+        <!-- Earth Zoom-In Section -->
+        <div class="section zoom-container" id="zoom-earth">
+            <img id="earth-image" src="img/earth.png" alt="Earth">
+        </div>
+
+        <!-- Visualization for Geospatial Visualization -->
+        <div class="section iframe-container" id="plot2">
+            <iframe id="vizGeospatial" src="plots/geospatial/index.html" loading="eager"></iframe>
+        </div>
+
+        <div class="section narrative" id="filler"></div>
+
+        <!-- Narrative for Custom Visualization -->
+        <div class="section narrative" id="narrative3">
+            <div class="content">
+                <h2>Custom Insights</h2>
+                <p>This visualization comprises two distinct, interactive visual components designed to analyze and compare habitable planets' characteristics:</p>
+                <ol>
+                    <li>
+                      <strong>Custom Lollipop Chart:</strong>
+                      Visualizes planets based on a selected parameter (e.g., Mass, Radius, Distance, etc.). Each planet is represented as an image scaled according to its size (relative to Earth), arranged in ascending order of the selected parameter.
+                    </li>
+                    <li>
+                      <strong>Spider (Radar) Plot:</strong>
+                      Compares a selected planet’s attributes (e.g., Age, Temperature, Mass, etc.) against Earth's data, showcasing differences in various characteristics on a radar chart.
+                    </li>
+                </ol>
+                
+                <h2>Key Features</h2>
+                <h3>Custom Lollipop Chart</h3>
+                <ul>
+                    <li>
+                        <strong>Visual Representation:</strong>
+                        Planets are represented as scaled images, with their sizes proportional to their physical size (radius). The chart dynamically adjusts to the selected parameter, such as distance from Earth or similarity index.
+                    </li>
+                    <li>
+                        <strong>Interactive Hovering:</strong>
+                        Hovering over a planet shows its name and value for the selected parameter in a tooltip.
+                    </li>
+                    <li>
+                        <strong>Clickable Planets:</strong>
+                        Clicking on a planet generates a detailed comparison of its characteristics with Earth on the spider plot.
+                    </li>
+                    <li>
+                        <strong>Dynamic Sorting:</strong>
+                        Planets are sorted in ascending order of the selected parameter for easy trend identification.
+                    </li>
+                </ul>
+                  <h3>Spider (Radar) Plot</h3>
+                <ul>
+                    <li>
+                    <strong>Multi-Dimensional Comparison:</strong>
+                    Plots the selected planet’s attributes across multiple fields (e.g., Age, Distance, Temperature) on a radar chart. Earth's data is included as a baseline for comparison.
+                    </li>
+                    <li>
+                    <strong>Scalable Radar Axes:</strong>
+                    Each axis scales based on the minimum and maximum values in the dataset, ensuring accurate representation.
+                    </li>
+                    <li>
+                    <strong>Grid Levels:</strong>
+                    Concentric octagons represent increasing levels of values, making it easy to gauge relative magnitudes.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section narrative" id="narrative4">
+            <div class="content">
+                <h2>How to Use the Visualization</h2>
+                <h3>Interacting with the Custom Lollipop Chart</h3>
+                <ol>
+                    <li>
+                    <strong>Select a Parameter:</strong>
+                    Use the dropdown menu to select a parameter of interest (e.g., Mass, Distance, etc.). The chart updates to show planets arranged and scaled according to the chosen parameter.
+                    </li>
+                    <li>
+                    <strong>Hover for Details:</strong>
+                    Hover over a planet image to view its name and value for the selected parameter in a tooltip.
+                    </li>
+                    <li>
+                    <strong>Click for In-Depth Analysis:</strong>
+                    Clicking on a planet generates a spider plot for a detailed comparison with Earth.
+                    </li>
+                </ol>
+
+                <h3>Exploring the Spider Plot</h3>
+                <ol>
+                    <li>
+                    <strong>Attribute Comparison:</strong>
+                    Observe how the selected planet differs from Earth across attributes like Age, Mass, and Flux. Each axis shows the relative scale of the attributes, with Earth's data serving as a benchmark.
+                    </li>
+                    <li>
+                    <strong>Hover for Data Points:</strong>
+                    Explore the radar chart points to understand the planet's magnitude for each attribute.
+                    </li>
+                </ol>
+
+                <h2>Purpose of the Visualization</h2>
+                <p>
+                    This visualization is designed to:
+                </p>
+                <ul>
+                    <li>
+                    <strong>Compare Habitability:</strong>
+                    The lollipop chart and spider plot allow users to identify planets that are most similar to Earth and explore the reasons for these similarities. The Earth Similarity Index (ESI) is particularly insightful for this purpose.
+                    </li>
+                    <li>
+                    <strong>Identify Trends:</strong>
+                    The lollipop chart helps users explore trends across all habitable planets for various parameters, such as identifying planets close to Earth or those with larger radii.
+                    </li>
+                    <li>
+                    <strong>Multi-Dimensional Analysis:</strong>
+                    The radar chart provides a quick and intuitive way to compare planets across multiple attributes simultaneously.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Visualization for Custom Visualization -->
+        <div class="section iframe-container" id="plot3">
+            <iframe id="vizCustom" src="plots/custom/DV_Project/index.html" loading="eager"></iframe>
+        </div>
+    </div>
+
+    <!-- Scrollama Script -->
+    <script src="https://unpkg.com/scrollama"></script>
+</body>
+</html>

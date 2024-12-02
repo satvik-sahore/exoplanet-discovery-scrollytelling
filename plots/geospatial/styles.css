@@ -1,0 +1,95 @@
+/* styles.css */
+
+body {
+  font-family: 'Inter', sans-serif;
+  transform: scale(0.9); /* Scale down to 80% */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+#filters {
+  position: absolute;
+  top: 10px;
+  left: 200px;
+  background: rgba(255,255,255,0.8);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#world-map {
+  width: 70%;
+  height: 95vh;
+  background-color: transparent;
+}
+
+path {
+  stroke: #fff; /* Set boundary color to white */
+  stroke-width: 0.5px;
+}
+
+circle {
+  cursor: pointer;
+}
+
+.tooltip {   
+  position: absolute;           
+  text-align: center;           
+  padding: 8px;                
+  font: 14px sans-serif;      
+  background: rgba(255, 255, 255, 0.9);   
+  border: 1px solid #ccc;     
+  border-radius: 4px;         
+  pointer-events: none;       
+  box-shadow: 0px 0px 5px 0px #aaa;
+}
+
+.legend rect {
+  stroke: #000;
+  stroke-width: 1px;
+}
+
+.legend-country, .legend-facility {
+  font-family: 'Inter', sans-serif;
+}
+
+.legend-country text, .legend-facility text {
+  fill: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+}
+
+#timeline-container {
+  position: absolute;
+  bottom: 20px;
+  left: 30%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.8);
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#play-button {
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#timeline-slider {
+  width: 300px;
+}
+
+#current-date {
+  font-weight: bold;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* Highlighted Facilities */
+.highlighted {
+  fill: yellow; /* Change fill color to highlight */
+}

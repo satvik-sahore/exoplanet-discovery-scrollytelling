@@ -1,0 +1,54 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    background-size: cover;
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+/* Centering Content */
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Title Section */
+.title {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px #000;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.5em;
+    font-weight: normal;
+    text-shadow: 1px 1px 5px #000;
+    margin-bottom: 20px;
+}
+
+/* Chart Container */
+#line-chart-container {
+    width: 90%;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    overflow-x: visible;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Tooltip */
+.tooltip {
+    position: absolute;
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 4px;
+    display: none;
+    pointer-events: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
