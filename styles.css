@@ -71,6 +71,10 @@ body {
   left: 8%;
 }
 
+#narrative-011 {
+  left: 8%;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

@@ -53,7 +53,7 @@
                       <strong>Line Path:</strong>
                       <ul>
                         <li>A smooth line connects the data points, providing a continuous representation of the trend.</li>
-                        <li>The line’s shape helps users quickly identify periods of rapid growth or stagnation in cumulative discoveries.</li>
+                        <li>The line's shape helps users quickly identify periods of rapid growth or stagnation in cumulative discoveries.</li>
                       </ul>
                     </li>
                     <li>
@@ -117,6 +117,24 @@
             <iframe id="linechart" src="plots/linechart/index.html" loading="eager"></iframe>
         </div>
 
+        <div class="section narrative" id="narrative-1.11">
+            <div class="content">
+                <h2>The Surge in Exoplanet Discoveries Post-2009</h1>
+                <p>
+                    The surge in exoplanet discoveries after 2009 is largely attributed to NASA's <strong>Kepler Space Telescope</strong>, 
+                    which revolutionized the field of exoplanet research. Launched in 2009, Kepler used the <em>transit method</em> to detect planets by 
+                    monitoring the dimming of stars caused by orbiting planets passing in front of them. This method enabled the detection of thousands 
+                    of exoplanets, including many Earth-sized and potentially habitable ones in the "Goldilocks Zone," where conditions might support liquid water.
+                </p>
+                <p>
+                    Kepler's high sensitivity and continuous observation of a fixed region of the sky provided a statistical understanding of planetary systems, 
+                    revealing that planets are common in the galaxy. By the end of its primary mission in 2013, and even during its extended K2 mission, 
+                    Kepler had identified over <strong>2,600 confirmed exoplanets</strong> and thousands of candidates, reshaping our understanding of the universe 
+                    and highlighting the diversity of planetary systems.
+                </p>
+            </div>
+        </div>
+
         <div class="section image-container" id="kepler-telescope">
             <img id="kepler-image" src="img/kepler_telescope.png" alt="Kepler Telescope">
         </div>
@@ -128,6 +146,25 @@
                 <p>Kepler detected planets by observing transits—small dips in a star's brightness caused when a planet passes in front of it.</p>
                 <p>The spacecraft was essentially built around a single, specially designed instrument: a telescope with a 3-foot (1-meter) aperture and an image sensor array. Its 4-foot, 7-inch (1.4-meter) mirror was one of the largest ever sent beyond Earth's orbit.</p>
                 <p>Designed to monitor approximately 100,000 main-sequence stars over three and a half years, Kepler quickly demonstrated its capability by discovering five exoplanets—Kepler 4b, 5b, 6b, 7b, and 8b—within its first six weeks of operation, an achievement announced by NASA in January 2010.</p>
+            </div>
+        </div>
+
+        <div class="section narrative" id="narrative-011">
+            <div class="content">
+                <h2>Shift in Exoplanet Discovery Methods</h1>
+                <p>
+                    After the Kepler era, exoplanet discoveries expanded beyond the <strong>transit method</strong> to include a variety of techniques:
+                </p>
+                <ul>
+                    <li><strong>Radial Velocity:</strong> Measuring a star's wobble due to gravitational pull from orbiting planets, especially effective for longer orbits.</li>
+                    <li><strong>Direct Imaging:</strong> Visualizing planets directly, enabling atmospheric studies using telescopes like the James Webb Space Telescope (JWST).</li>
+                    <li><strong>Microlensing:</strong> Detecting distant planets via gravitational lensing, useful for systems in the galactic bulge.</li>
+                    <li><strong>Astrometry:</strong> Measuring precise star movements, enhanced by missions like <em>ESA's Gaia</em>.</li>
+                    <li><strong>Multi-Method Approach:</strong> Combining methods (e.g., transit and radial velocity) to confirm and study planets in detail.</li>
+                </ul>
+                <p>
+                    Modern missions like <strong>TESS</strong> and <strong>JWST</strong> continue to refine these methods, offering unprecedented insights into diverse exoplanetary systems.
+                </p>
             </div>
         </div>
 
@@ -210,12 +247,47 @@
             <iframe id="vizScatter" src="plots/scatterplot/DV-Project/index.html" loading="eager"></iframe>
         </div>
 
+        <div class="section narrative" id="narrative-0.11">
+            <div class="content">
+                <h2>NASA's Global Expansion in Exoplanet Discovery</h2>
+                <p>
+                    Over the years, NASA has expanded its exoplanet discovery facilities and collaborations beyond the United States, leveraging global resources and expertise:
+                </p>
+                <ul>
+                    <li>
+                        <strong>International Collaborations:</strong> NASA partnered with space agencies like the European Space Agency (ESA) for missions such as 
+                        <em>Gaia</em> and the upcoming <em>PLATO</em>, which aim to detect and characterize exoplanets.
+                    </li>
+                    <li>
+                        <strong>Global Telescope Networks:</strong> NASA utilizes observatories worldwide, such as the 
+                        <em>European Southern Observatory (ESO)</em> in Chile and facilities in Hawaii, to complement space-based missions.
+                    </li>
+                    <li>
+                        <strong>Ground-Based Support:</strong> NASA-funded projects like the <em>Las Cumbres Observatory Global Telescope Network</em> and 
+                        <em>MINERVA</em> involve telescopes located across continents to provide continuous monitoring of stellar systems.
+                    </li>
+                    <li>
+                        <strong>Space Missions with International Components:</strong> Missions like the James Webb Space Telescope (JWST) and the Transiting 
+                        Exoplanet Survey Satellite (TESS) rely on data sharing and infrastructure from global scientific communities.
+                    </li>
+                    <li>
+                        <strong>Data Sharing Platforms:</strong> NASA works with international teams through platforms like the Exoplanet Archive, enabling 
+                        scientists worldwide to access and analyze exoplanet data.
+                    </li>
+                </ul>
+                <p>
+                    These global efforts have fostered international cooperation, broadening the scope of exoplanet science and ensuring that discoveries benefit from the best resources available worldwide.
+                </p>
+            </div>
+        </div>
+
         <div class="section narrative" id="narrative2">
             <div class="content">
                 <h2>Geospatial Distribution: Explore the Global Landscape of Exoplanet Discoveries</h2>
                 <p>This interactive world map provides a comprehensive view of the exoplanet discovery process, highlighting the contributions of ground-based and space-based facilities across the globe. Using data-driven visuals, the map reveals the intricate relationship between location, discovery techniques, and the expanding catalog of exoplanets.</p>
                 <p>Key Features of the Visualization:
                     <ul>World Map Overview: The map presents a thermal representation of exoplanet discoveries, where countries are color-coded based on the number of exoplanets identified through facilities within their borders. Hovering over a country provides detailed information about its contribution to exoplanet discoveries.</ul>
+                    <ul>Discovery Location Evolution and Expansion: A play button and a time slider stream exoplanet discovery data as per the date, showcasing expansion and shift in the countries and facilities contributing to the exoplanet discoveries.</ul>
                     <ul>Facility-Level Insights: Circles on the map represent individual discovery facilities—both ground-based observatories and space-based missions. The size and color intensity of each circle correlate with the number of exoplanets discovered. Hover over a circle to see detailed data about the facility, including its name, location, and total discoveries.</ul>
                     <ul>Interactive Filters: Use checkboxes to toggle between ground-based and space-based facilities, tailoring the visualization to focus on specific discovery methods. The map updates dynamically to reflect your preferences.</ul>
                     <ul>Legends and Scales: Two legends provide context for the thermal maps:
@@ -247,6 +319,35 @@
         </div>
 
         <div class="section narrative" id="filler"></div>
+
+        <div class="section narrative" id="narrative3.0">
+            <div class="content">
+                <h2>Where do we Stand Now?: Potentially Habitable Planets Discovered by NASA</h2>
+                <p>
+                    NASA has identified several exoplanets that may be capable of supporting life due to their location in the "habitable zone," where liquid water could exist on the surface. Here are some notable discoveries:
+                </p>
+                <ul>
+                    <li>
+                        <strong>Kepler-452b:</strong> Often called "Earth's Cousin," this planet is about 1.6 times the size of Earth and orbits a star similar to our Sun in its habitable zone.
+                    </li>
+                    <li>
+                        <strong>Kepler-22b:</strong> One of the first potentially habitable planets discovered, it is 2.4 times the size of Earth and orbits a Sun-like star in the habitable zone.
+                    </li>
+                    <li>
+                        <strong>TRAPPIST-1 System:</strong> This system, located about 39 light-years away, contains seven Earth-sized planets, three of which are in the habitable zone, offering a unique opportunity to study potentially habitable worlds.
+                    </li>
+                    <li>
+                        <strong>TOI-700 d:</strong> Discovered by TESS, this planet is located 100 light-years away and is similar in size to Earth. It resides in the habitable zone of a small, cool star.
+                    </li>
+                    <li>
+                        <strong>Proxima Centauri b:</strong> Though discovered with international collaboration, NASA has contributed to its study. This Earth-sized planet orbits the nearest star to the Sun in the habitable zone.
+                    </li>
+                </ul>
+                <p>
+                    These discoveries represent a major step in the search for extraterrestrial life and help us understand the conditions necessary for habitability. Future missions, such as the James Webb Space Telescope, will focus on analyzing these planets' atmospheres for signs of life.
+                </p>
+            </div>
+        </div>
 
         <div class="section narrative" id="narrative3">
             <div class="content">
