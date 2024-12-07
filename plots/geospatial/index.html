@@ -1,37 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Exoplanet Discovery Thermal Map</title>
-  <link rel="stylesheet" href="styles.css">
-  <!-- Include D3.js (ensure version compatibility, e.g., v6) -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <!-- Include TopoJSON if not already included -->
-  <script src="https://d3js.org/topojson.v2.min.js"></script>
-</head>
-<body>
-  
-  <!-- Filter Controls -->
-  <div id="filters">
-    <label><input type="checkbox" id="ground" checked> Ground-based</label>
-    <label><input type="checkbox" id="space" checked> Space-based</label>
-  </div>
-  
-  <!-- Timeline Slider Container -->
-  <div id="timeline-container">
-    <button id="play-button">Play</button>
-    <input type="range" id="timeline-slider" min="0" max="0" step="1" value="0">
-    <span id="current-date">YYYY-MM</span>
-  </div>
-  
-  <!-- Visualization SVG -->
-  <svg id="world-map"></svg>
-  
-  <!-- Load Facilities Data First -->
-  <script src="disc_facilities.js"></script>
-  
-  <!-- Load Planets Visualization Script -->
-  <script src="planets.js"></script>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exoplanet Discovery Thermal Map</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+  </head>
+  <body>
+    <div id="filters">
+      <label><input type="checkbox" id="ground" checked /> Ground-based</label>
+      <label><input type="checkbox" id="space" checked /> Space-based</label>
+    </div>
+    <div id="timeline-container">
+      <button id="play-button">Play</button>
+      <input
+        type="range"
+        id="timeline-slider"
+        min="0"
+        max="0"
+        step="1"
+        value="0"
+      />
+      <span id="current-date">YYYY-MM</span>
+    </div>
+    <svg id="world-map"></svg>
+    <script src="disc_facilities.js"></script>
+    <script src="planets.js"></script>
+  </body>
 </html>

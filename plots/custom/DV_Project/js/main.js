@@ -14,14 +14,14 @@ const fields = [
 ];
 
 const earthData = {
-  Age: 4.54, // Earth's age in billions of years
-  Distance: 0, // Distance from itself, hence 0
-  ESI: 1, // Earth Similarity Index for Earth is 1
-  Flux: 1, // Solar flux normalized for Earth
-  Mass: 1, // Mass in Earth masses
-  Period: 365.25, // Orbital period in days
-  Radius: 1, // Radius in Earth radii
-  Temperature: 288, // Surface temperature in Kelvin
+  Age: 4.54,
+  Distance: 0,
+  ESI: 1,
+  Flux: 1,
+  Mass: 1,
+  Period: 365.25,
+  Radius: 1,
+  Temperature: 288,
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -86,20 +86,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Use this function to draw the lollipop chart.
 function drawCustomPlot() {
   console.log("trace:drawCustomPlot()");
 
-  // Removing elements from svg to avoid overwritting
-  // customPlotSVG.selectAll(".rectLegend").remove();
-  // customPlotSVG.selectAll(".textLegend").remove();
-  // customPlotSVG.selectAll(".x-title").remove();
-  // customPlotSVG.selectAll(".y-title").remove();
-
-  // Fetching the Parameter selected from the html element
   var Parameter = document.getElementById("Parameter").value;
 
-  // Filtering data as per Parameter selected
   habitablePlanetsSelectedParameter = habitablePlanets
     .map(function (hp) {
       return {
@@ -110,41 +101,40 @@ function drawCustomPlot() {
     })
     .sort((a, b) => a.Parameter - b.Parameter);
 
-  // Creating axes for the chart
-  const imageSize = 100; // Earth-size in pixels
-  const baseSpacing = 10; // Base spacing that will be dynamically adjusted
-  let cumulativeX = 0; // Starting x-position
+  const imageSize = 100;
+  const baseSpacing = 10;
+  let cumulativeX = 0;
+  let cumulativeXName = 0;
 
-  // Calculate the required SVG width based on the total width of all images and dynamic spacing
   const totalWidth = habitablePlanetsSelectedParameter.reduce((acc, d) => {
     const imageWidth = imageSize * d.Radius;
-    const dynamicSpacing = baseSpacing * d.Radius; // Adjust spacing based on radius
+    const dynamicSpacing = baseSpacing * d.Radius;
     acc += imageWidth + dynamicSpacing;
     return acc;
   }, 0);
 
-  const height = 400;
+  const height = 500;
 
-  // Adjust SVG width and height
   customPlotSVG.attr("width", totalWidth).attr("height", height);
   const tooltip = d3.select("#customPlot_toolTip");
 
-  // Render the images in ascending order of the selected parameter with dynamic spacing
   customPlotSVG
-    .selectAll(".image")
+    .selectAll(".planetGroup")
     .data(habitablePlanetsSelectedParameter, (d) => d.Name)
     .join(
-      (enter) =>
-        enter
+      (enter) => {
+        const group = enter.append("g").attr("class", "planetGroup");
+
+        group
           .append("image")
           .attr("class", "image")
           .attr("x", (d) => {
             const x = cumulativeX;
-            cumulativeX += imageSize * d.Radius + baseSpacing * d.Radius; // Update cumulative x with dynamic spacing
+            cumulativeX += imageSize * d.Radius + baseSpacing * d.Radius;
             return x;
           })
-          .attr("y", 0) // Fixed y position for alignment
-          .attr("width", (d) => imageSize * d.Radius) // Scale based on Earth's radius
+          .attr("y", (d) => (height - 150) / 2 - (imageSize * d.Radius) / 2)
+          .attr("width", (d) => imageSize * d.Radius)
           .attr("height", (d) => imageSize * d.Radius)
           .attr("xlink:href", (d) => "img/subject files/" + d.Name + ".png")
           .attr("opacity", 0)
@@ -157,7 +147,7 @@ function drawCustomPlot() {
               .style("left", event.pageX + 10 + "px")
               .style("top", event.pageY + 10 + "px");
           })
-          .on("mouseout", (d) => {
+          .on("mouseout", () => {
             tooltip.style("opacity", 0);
             unHighlight();
           })
@@ -166,46 +156,53 @@ function drawCustomPlot() {
           })
           .transition()
           .duration(1000)
-          .attr("y", (d) => (height - imageSize * d.Radius) / 2)
-          .attr("opacity", 1),
-      (update) =>
+          .attr("opacity", 1);
+
+        group
+          .append("text")
+          .attr("class", "planetName")
+          .attr("x", (d) => {
+            const x = cumulativeXName;
+            cumulativeXName += imageSize * d.Radius + baseSpacing * d.Radius;
+            return x;
+          })
+          .attr("y", (d) => imageSize * 4)
+          .attr("text-anchor", "middle")
+          .attr("fill", "white")
+          .text((d) => d.Name)
+          .style("font-size", "14px")
+          .style("font-family", "Arial");
+      },
+      (update) => {
         update
-          .attr("width", (d) => imageSize * d.Radius)
-          .attr("height", (d) => imageSize * d.Radius)
-          .on("mouseover", (event, d) => {
-            tooltip.style("opacity", 1).html(`${Parameter}: ${d.Parameter}`);
-            highlight(d.Name);
-          })
-          .on("mousemove", (event) => {
-            tooltip
-              .style("left", event.pageX + 10 + "px")
-              .style("top", event.pageY + 10 + "px");
-          })
-          .on("mouseout", (d) => {
-            tooltip.style("opacity", 0);
-            unHighlight();
-          })
-          .on("click", (event, d) => {
-            plotSpider(d.Name);
-          })
+          .select(".image")
           .transition()
           .duration(1000)
           .attr("x", (d) => {
             const x = cumulativeX;
-            cumulativeX += imageSize * d.Radius + baseSpacing * d.Radius; // Update cumulative x with dynamic spacing
+            cumulativeX += imageSize * d.Radius + baseSpacing * d.Radius;
             return x;
-          }),
+          });
+
+        update
+          .select(".planetName")
+          .attr("x", (d) => {
+            const x = cumulativeXName;
+            cumulativeXName += imageSize * d.Radius + baseSpacing * d.Radius;
+            return x;
+          })
+          .text((d) => d.Name);
+      },
       (exit) => exit.transition().duration(500).style("opacity", 0).remove()
     );
 
-  // Remove and re-add axis labels
   customPlotSVG.selectAll(".x-title, .y-title").remove();
 
   customPlotSVG
     .append("text")
     .attr("class", "x-title")
     .attr("x", totalWidth / 2)
-    .attr("y", 580)
+    .attr("y", height - 20)
     .attr("fill", "white")
     .text(`Planets Sorted by ${Parameter}`);
 }
@@ -214,22 +211,20 @@ function plotSpider(name) {
   console.log("Inside plot spider");
   console.log(name);
 
-  // Find the specific planet data by name
   const planet = habitablePlanets.find((d) => d.Name === name);
   if (!planet) {
     console.error("Planet data not found.");
     return;
   }
 
-  const radius = 150;
-  const labelOffset = 20;
-  const centerX = 200;
-  const centerY = 200;
+  const radius = 250;
+  const labelOffset = 30;
+  const centerX = 300;
+  const centerY = 300;
   const levels = 5;
   const angleSlice = (Math.PI * 2) / fields.length;
   const startAngleOffset = -Math.PI / 2;
 
-  // Create scales for each axis based on min-max values
   const scales = {};
   fields.forEach((field) => {
     scales[field] = d3
@@ -238,10 +233,8 @@ function plotSpider(name) {
       .range([0, radius]);
   });
 
-  // Transition duration
   const transitionDuration = 1000;
 
-  // Draw octagonal grid levels for each axis (only create once)
   if (spiderSVG.selectAll(".grid").empty()) {
     for (let level = 1; level <= levels; level++) {
       const levelFactor = (radius / levels) * level;
@@ -272,14 +265,12 @@ function plotSpider(name) {
     }
   }
 
-  // Draw axis lines and labels outside the octagon
   if (spiderSVG.selectAll(".axis").empty()) {
     fields.forEach((field, i) => {
       const angle = i * angleSlice + startAngleOffset;
       const x = centerX + Math.cos(angle) * radius;
       const y = centerY + Math.sin(angle) * radius;
 
-      // Axis line
       spiderSVG
         .append("line")
         .attr("class", "axis")
@@ -290,41 +281,21 @@ function plotSpider(name) {
         .style("stroke", "gray")
         .style("stroke-width", 1);
 
-      // Axis label
       const labelX = centerX + Math.cos(angle) * (radius + labelOffset);
       const labelY = centerY + Math.sin(angle) * (radius + labelOffset);
 
       spiderSVG
         .append("text")
         .attr("class", "label")
-        .attr(
-          "x",
-          field === "Radius"
-            ? labelX - 10
-            : field === "Period"
-            ? labelX - 30
-            : field === "Age"
-            ? labelX - 10
-            : field === "Mass"
-            ? labelX - 15
-            : labelX
-        )
+        .attr("x", labelX)
         .attr("y", labelY)
         .attr("dy", "0.35em")
-        .style(
-          "text-anchor",
-          angle === 0 || angle === Math.PI
-            ? "middle"
-            : angle < Math.PI
-            ? "start"
-            : "end"
-        )
+        .style("text-anchor", "middle")
         .style("fill", "white")
         .text(field);
     });
   }
 
-  // Radar Polygon Path - Calculate each point for the radar path based on individual scales
   const radarPathData = fields.map((field, i) => {
     const angle = i * angleSlice + startAngleOffset;
     return {
@@ -333,7 +304,7 @@ function plotSpider(name) {
     };
   });
 
-  const earthDataScaled = fields.map((field, i) => {
+  const earthPathData = fields.map((field, i) => {
     const angle = i * angleSlice + startAngleOffset;
     return {
       x: centerX + Math.cos(angle) * scales[field](earthData[field]),
@@ -341,41 +312,37 @@ function plotSpider(name) {
     };
   });
 
-  const earthPathData = earthDataScaled.map((d, i) => {
-    const angle = i * angleSlice + startAngleOffset;
-    return {
-      x: centerX + Math.cos(angle) * d.value * radius,
-      y: centerY + Math.sin(angle) * d.value * radius,
-    };
-  });
-
-  if (spiderSVG.selectAll(".earthPolygon").empty()) {
-    spiderSVG
-      .append("path")
-      .datum(earthPathData)
-      .attr("class", "earthPolygon")
-      .attr(
-        "d",
-        d3
-          .line()
-          .x((d) => d.x)
-          .y((d) => d.y)
-          .curve(d3.curveLinearClosed)
-      )
-      .style("fill", "none")
-      .style("stroke", "red")
-      .style("stroke-width", 2)
-      .style("stroke-dasharray", "4 2");
-  }
-
-  // Define the line generator for the radar chart path in Cartesian coordinates
   const radarLine = d3
     .line()
     .x((d) => d.x)
     .y((d) => d.y)
     .curve(d3.curveLinearClosed);
 
-  // Draw or transition the radar polygon
+  const earthPolygon = spiderSVG
+    .selectAll(".earthPolygon")
+    .data([earthPathData]);
+
+  earthPolygon.join(
+    (enter) =>
+      enter
+        .append("path")
+        .attr("class", "earthPolygon")
+        .attr("d", radarLine(earthPathData))
+        .style("fill", "#EADDCA")
+        .style("stroke", "#E49B0F")
+        .style("stroke-width", 2)
+        .style("fill-opacity", 0.8),
+    (update) =>
+      update
+        .transition()
+        .duration(transitionDuration)
+        .attrTween("d", function () {
+          const previous = d3.select(this).attr("d");
+          const current = radarLine(earthPathData);
+          return d3.interpolateString(previous, current);
+        })
+  );
+
   const radarPolygon = spiderSVG
     .selectAll(".radarPolygon")
     .data([radarPathData]);
@@ -385,7 +352,7 @@ function plotSpider(name) {
       enter
         .append("path")
         .attr("class", "radarPolygon")
-        .attr("d", radarLine(radarPathData)) // Initial path
+        .attr("d", radarLine(radarPathData))
         .style("fill", "steelblue")
         .style("stroke", "darkblue")
         .style("stroke-width", 2)
@@ -401,7 +368,28 @@ function plotSpider(name) {
         })
   );
 
-  // Draw or transition radar chart points
+  const earthPoints = spiderSVG.selectAll(".earthCircle").data(earthPathData);
+
+  earthPoints.join(
+    (enter) =>
+      enter
+        .append("circle")
+        .attr("class", "earthCircle")
+        .attr("r", 4)
+        .attr("cx", (d) => d.x)
+        .attr("cy", (d) => d.y)
+        .style("fill", "#E49B0F")
+        .style("stroke", "#EADDCA")
+        .style("stroke-width", 1.5)
+        .style("fill-opacity", 0.9),
+    (update) =>
+      update
+        .transition()
+        .duration(transitionDuration)
+        .attr("cx", (d) => d.x)
+        .attr("cy", (d) => d.y)
+  );
+
   const radarPoints = spiderSVG.selectAll(".radarCircle").data(radarPathData);
 
   radarPoints.join(

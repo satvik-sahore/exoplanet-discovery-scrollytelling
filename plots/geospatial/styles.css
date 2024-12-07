@@ -1,8 +1,6 @@
-/* styles.css */
-
 body {
-  font-family: 'Inter', sans-serif;
-  transform: scale(0.9); /* Scale down to 80% */
+  font-family: "Inter", sans-serif;
+  transform: scale(0.9);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +12,7 @@ body {
   position: absolute;
   top: 10px;
   left: 200px;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.8);
   padding: 10px;
   border-radius: 5px;
 }
@@ -26,7 +24,7 @@ body {
 }
 
 path {
-  stroke: #fff; /* Set boundary color to white */
+  stroke: #fff;
   stroke-width: 0.5px;
 }
 
@@ -34,15 +32,15 @@ circle {
   cursor: pointer;
 }
 
-.tooltip {   
-  position: absolute;           
-  text-align: center;           
-  padding: 8px;                
-  font: 14px sans-serif;      
-  background: rgba(255, 255, 255, 0.9);   
-  border: 1px solid #ccc;     
-  border-radius: 4px;         
-  pointer-events: none;       
+.tooltip {
+  position: absolute;
+  text-align: center;
+  padding: 8px;
+  font: 14px sans-serif;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  pointer-events: none;
   box-shadow: 0px 0px 5px 0px #aaa;
 }
 
@@ -51,11 +49,13 @@ circle {
   stroke-width: 1px;
 }
 
-.legend-country, .legend-facility {
-  font-family: 'Inter', sans-serif;
+.legend-country,
+.legend-facility {
+  font-family: "Inter", sans-serif;
 }
 
-.legend-country text, .legend-facility text {
+.legend-country text,
+.legend-facility text {
   fill: rgba(255, 255, 255, 0.9);
   font-size: 12px;
 }
@@ -65,7 +65,7 @@ circle {
   bottom: 20px;
   left: 30%;
   transform: translateX(-50%);
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.8);
   padding: 10px 20px;
   border-radius: 5px;
   display: flex;
@@ -89,7 +89,7 @@ circle {
   text-align: center;
 }
 
-/* Highlighted Facilities */
 .highlighted {
-  fill: yellow; /* Change fill color to highlight */
+  stroke: white;
+  stroke-width: 1px;
 }
