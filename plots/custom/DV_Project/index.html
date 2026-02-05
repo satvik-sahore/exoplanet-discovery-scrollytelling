@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="text-center" , id="title">Custom Plot: Exoplanet Ordering</h1>
+      <h1 class="text-center" id="title">Custom Plot: Exoplanet Ordering</h1>
       <div class="row">
         <div class="col-1">Parameter:</div>
         <div class="col-3">
@@ -29,12 +29,20 @@
           </select>
         </div>
       </div>
-      <div id="myDataVis">
+      <div id="customPlot">
         <div id="customPlot_toolTip"></div>
         <svg id="customPlot_SVG"></svg>
       </div>
-      <div>
-        <svg id="spider_SVG"></svg>
+      <div id="myDataVis" class="flex-container">
+        <div id="spiderContainer">
+          <svg id="spider_SVG"></svg>
+        </div>
+        <div id="detailsContainer">
+          <h2>Planet Details</h2>
+          <div id="planetDetails">
+            <p>Select a planet to see details</p>
+          </div>
+        </div>
       </div>
     </div>
   </body>

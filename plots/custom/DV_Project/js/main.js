@@ -104,7 +104,8 @@ function drawCustomPlot() {
   const imageSize = 100;
   const baseSpacing = 10;
   let cumulativeX = 0;
-  let cumulativeXName = 0;
+  let cumulativeXName = 50;
+  let flag = 1;
 
   const totalWidth = habitablePlanetsSelectedParameter.reduce((acc, d) => {
     const imageWidth = imageSize * d.Radius;
@@ -163,6 +164,11 @@ function drawCustomPlot() {
           .attr("class", "planetName")
           .attr("x", (d) => {
             const x = cumulativeXName;
+            if (flag) {
+              cumulativeXName +=
+                imageSize * d.Radius + baseSpacing * d.Radius - 70;
+              flag = 0;
+            }
             cumulativeXName += imageSize * d.Radius + baseSpacing * d.Radius;
             return x;
           })
@@ -186,6 +192,8 @@ function drawCustomPlot() {
 
         update
           .select(".planetName")
+          .transition()
+          .duration(1000)
           .attr("x", (d) => {
             const x = cumulativeXName;
             cumulativeXName += imageSize * d.Radius + baseSpacing * d.Radius;
@@ -193,7 +201,7 @@ function drawCustomPlot() {
           })
           .text((d) => d.Name);
       },
-      (exit) => exit.transition().duration(500).style("opacity", 0).remove()
+      (exit) => exit.transition().duration(1000).style("opacity", 0).remove()
     );
 
   customPlotSVG.selectAll(".x-title, .y-title").remove();
@@ -411,6 +419,8 @@ function plotSpider(name) {
         .attr("cx", (d) => d.x)
         .attr("cy", (d) => d.y)
   );
+
+  showPlanetDetails(planet);
 }
 
 function normalize(value, min, max) {
@@ -426,4 +436,24 @@ function highlight(name) {
 
 function unHighlight() {
   customPlotSVG.selectAll("image").attr("opacity", 1);
+}
+
+function showPlanetDetails(planet) {
+  const detailsContainer = document.getElementById("planetDetails");
+  if (!planet) {
+    detailsContainer.innerHTML = "<p>Select a planet to see details</p>";
+    return;
+  }
+
+  detailsContainer.innerHTML = `
+    <p><strong>Name:</strong> ${planet.Name}</p>
+    <p><strong>Mass:</strong> ${planet.Mass} Earth masses</p>
+    <p><strong>Radius:</strong> ${planet.Radius} Earth radii</p>
+    <p><strong>Temperature:</strong> ${planet.Temperature} K</p>
+    <p><strong>Flux:</strong> ${planet.Flux}</p>
+    <p><strong>Period:</strong> ${planet.Period} days</p>
+    <p><strong>Distance:</strong> ${planet.Distance} light-years</p>
+    <p><strong>Age:</strong> ${planet.Age} billion years</p>
+    <p><strong>ESI:</strong> ${planet.ESI}</p>
+  `;
 }

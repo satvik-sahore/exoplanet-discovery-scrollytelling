@@ -34,7 +34,7 @@ async function handleStepProgress(response) {
     keplerImage.style.transform = `translate(${translateX}%, -50%)`;
   }
 
-  if (response.element.id === "narrative0.1") {
+  if (response.element.id === "narrative-012") {
     const moveProgress = Math.min(response.progress, 1);
     const translateX = -200 - moveProgress * 500;
     keplerImage.style.transform = `translate(${translateX}%, -50%)`;

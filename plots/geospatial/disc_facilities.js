@@ -250,11 +250,6 @@ const facilities = [
     ],
   },
   {
-    name: "KOINet",
-    type: "Multiple Locales",
-    locations: [],
-  },
-  {
     name: "La Silla Observatory",
     type: "Ground",
     locations: [{ latitude: -29.27, longitude: -70.76, country: "Chile" }],
@@ -342,26 +337,6 @@ const facilities = [
     locations: [
       { latitude: -44.0253, longitude: 169.157, country: "New Zealand" },
     ],
-  },
-  {
-    name: "Multiple Facilities",
-    type: "Multiple Facilities",
-    locations: [],
-  },
-  {
-    name: "Multiple Observatories",
-    type: "Ground",
-    locations: [],
-  },
-  {
-    name: "Multiple Observatories",
-    type: "Multiple Locales",
-    locations: [],
-  },
-  {
-    name: "Multiple Observatories",
-    type: "Space",
-    locations: [{ country: "Multiple Countries" }],
   },
   {
     name: "NASA Infrared Telescope Facility (IRTF)",
